@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1775407594665",
+    "researcher_id": "24BCE9999",
+    "name": "Test User",
+    "email": "test@vit.ac.in",
+    "password": "$2a$10$zITWdIJaAjrVESVP60RJgeLD0/mEixg4gMq3ztzhX6P/zI7iKVGuu",
+    "department": "Computer Science Engineering",
+    "joined": "2026-04-05T16:46:34.665Z",
+    "total_scans": 0
+  },
+  {
+    "id": "1775408210788",
+    "researcher_id": "24BCE1211",
+    "name": "Amarnath P",
+    "email": "amarnath3328@gmail.com",
+    "password": "$2a$10$SEWt7AtTcKvy9kBsBi6ZOO4YVn6obOT3S51jzvM.LhSEj/BQ1LJd.",
+    "department": "Electronics and Communication",
+    "joined": "2026-04-05T16:56:50.788Z",
+    "total_scans": 1
+  }
+]

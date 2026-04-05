@@ -1,0 +1,502 @@
+[
+  {
+    "research_id": "24BCE1001",
+    "paper_title": "Deep Learning Approaches for Real-Time Object Detection in Autonomous Vehicles",
+    "author": "Arjun Mehta",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Intelligent Transportation Systems",
+    "year": 2024,
+    "keywords": ["deep learning", "object detection", "autonomous vehicles", "YOLO", "convolutional neural networks"],
+    "abstract": "This paper presents a novel deep learning framework for real-time object detection in autonomous vehicles. We propose an enhanced YOLO architecture that integrates multi-scale feature extraction with attention mechanisms to improve detection accuracy in challenging lighting and weather conditions. Our model achieves 94.3% mAP on the KITTI benchmark while maintaining inference speeds of 45 FPS on embedded GPU hardware. Extensive experiments demonstrate the effectiveness of our approach compared to existing state-of-the-art methods in both urban and highway driving scenarios."
+  },
+  {
+    "research_id": "24BCE1002",
+    "paper_title": "Federated Learning for Privacy-Preserving Medical Image Analysis",
+    "author": "Priya Nair",
+    "institution": "VIT Chennai",
+    "journal": "Nature Machine Intelligence",
+    "year": 2024,
+    "keywords": ["federated learning", "medical imaging", "privacy", "deep learning", "healthcare"],
+    "abstract": "We introduce a federated learning framework specifically designed for collaborative medical image analysis while preserving patient privacy. Our system enables multiple hospitals to jointly train diagnostic models without sharing sensitive patient data. Using differential privacy and secure aggregation protocols, we demonstrate that federated models can achieve performance comparable to centrally trained models on chest X-ray classification and brain MRI segmentation tasks. Results show only a 2.1% accuracy reduction compared to centralized training while providing strong privacy guarantees."
+  },
+  {
+    "research_id": "24BCE1003",
+    "paper_title": "Transformer-Based Natural Language Processing for Sentiment Analysis in Social Media",
+    "author": "Karthik Subramaniam",
+    "institution": "VIT Chennai",
+    "journal": "ACM Transactions on Information Systems",
+    "year": 2024,
+    "keywords": ["transformer", "sentiment analysis", "NLP", "BERT", "social media", "text classification"],
+    "abstract": "This research explores the application of transformer-based models for fine-grained sentiment analysis on social media platforms. We fine-tune a domain-adapted BERT variant on a large corpus of Twitter and Instagram posts covering diverse topics including politics, entertainment, and commerce. Our model captures contextual nuances, sarcasm, and multilingual expressions better than traditional approaches. Evaluation on benchmark datasets shows 91.7% F1-score, outperforming previous methods by 4.2%. We also present an analysis of how sentiment patterns evolve during major cultural events."
+  },
+  {
+    "research_id": "24BCE1004",
+    "paper_title": "Blockchain-Based Supply Chain Management with Smart Contract Automation",
+    "author": "Divya Krishnan",
+    "institution": "VIT Chennai",
+    "journal": "Journal of Enterprise Information Management",
+    "year": 2024,
+    "keywords": ["blockchain", "supply chain", "smart contracts", "Ethereum", "transparency", "logistics"],
+    "abstract": "This paper proposes a blockchain-based supply chain management system that leverages Ethereum smart contracts to automate procurement, tracking, and payment processes. Our architecture introduces a multi-tier consensus mechanism that reduces transaction latency while maintaining decentralization. The system integrates IoT sensors for real-time product tracking and automatically triggers contract execution upon verified delivery milestones. Case studies with three manufacturing companies demonstrate a 40% reduction in administrative overhead and near-elimination of fraudulent invoice disputes."
+  },
+  {
+    "research_id": "24BCE1005",
+    "paper_title": "Reinforcement Learning for Adaptive Traffic Signal Control in Smart Cities",
+    "author": "Rahul Venkatesh",
+    "institution": "VIT Chennai",
+    "journal": "Transportation Research Part C",
+    "year": 2024,
+    "keywords": ["reinforcement learning", "traffic control", "smart cities", "Q-learning", "urban mobility"],
+    "abstract": "We present a multi-agent reinforcement learning system for adaptive traffic signal control that optimizes citywide vehicle flow in real-time. Each intersection is controlled by an independent RL agent that learns cooperative strategies through shared reward signals reflecting network-level metrics. Our approach uses a dueling DQN architecture with prioritized experience replay and achieves 31% reduction in average vehicle delay compared to fixed-cycle signals. Simulation experiments on a realistic model of Chennai's central business district validate the scalability and robustness of the proposed system."
+  },
+  {
+    "research_id": "24BCE1006",
+    "paper_title": "Quantum Cryptography Protocols for Secure IoT Communication Networks",
+    "author": "Sneha Iyer",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Communications Letters",
+    "year": 2024,
+    "keywords": ["quantum cryptography", "IoT", "security", "QKD", "network protocols"],
+    "abstract": "This paper investigates the practical implementation of quantum key distribution protocols for securing IoT communication networks at scale. We design a hybrid classical-quantum protocol that integrates BB84 key distribution with lightweight symmetric encryption suitable for resource-constrained IoT devices. Our implementation addresses the key generation rate limitations of current QKD hardware by developing an intelligent key caching mechanism that adapts to traffic patterns. Security analysis under various attack models demonstrates unconditional security guarantees, and prototype testing on a 12-node IoT testbed confirms practical feasibility."
+  },
+  {
+    "research_id": "24BCE1007",
+    "paper_title": "Graph Neural Networks for Drug-Drug Interaction Prediction in Pharmacology",
+    "author": "Aditya Raman",
+    "institution": "VIT Chennai",
+    "journal": "Bioinformatics",
+    "year": 2024,
+    "keywords": ["graph neural networks", "drug interaction", "pharmacology", "GNN", "molecular graphs"],
+    "abstract": "We propose a heterogeneous graph neural network model for predicting drug-drug interactions by modeling molecular structures, protein targets, and pathway relationships in a unified knowledge graph. Our model employs attention-based message passing to capture complex relational patterns across different biological entity types. Training on the DrugBank database with 245,000 known interactions, our approach achieves an AUROC of 0.953, significantly outperforming existing machine learning methods. The model also provides interpretable interaction pathways that assist pharmacologists in understanding the mechanistic basis of predicted interactions."
+  },
+  {
+    "research_id": "24BCE1008",
+    "paper_title": "Edge Computing Architecture for Low-Latency Augmented Reality Applications",
+    "author": "Meera Patel",
+    "institution": "VIT Chennai",
+    "journal": "ACM Transactions on Computing for Healthcare",
+    "year": 2024,
+    "keywords": ["edge computing", "augmented reality", "latency", "5G", "mobile computing"],
+    "abstract": "This research introduces a hierarchical edge computing architecture optimized for deploying augmented reality applications with strict latency requirements. We develop a dynamic offloading framework that intelligently distributes rendering and tracking computations between mobile devices, edge servers, and cloud resources based on network conditions and user context. Our task scheduling algorithm minimizes end-to-end latency using a modified auction mechanism for resource allocation. Experimental evaluations in a 5G testbed demonstrate glass-to-glass latency of under 8ms for interactive AR experiences, enabling new applications in industrial maintenance, surgical assistance, and remote collaboration."
+  },
+  {
+    "research_id": "24BCE1009",
+    "paper_title": "Generative Adversarial Networks for Synthetic Medical Data Augmentation",
+    "author": "Vikram Shankar",
+    "institution": "VIT Chennai",
+    "journal": "Medical Image Analysis",
+    "year": 2024,
+    "keywords": ["GAN", "medical data", "data augmentation", "synthetic data", "deep learning", "radiology"],
+    "abstract": "We develop a conditional generative adversarial network specifically designed for synthesizing high-quality medical images to address training data scarcity in clinical AI applications. Our architecture incorporates anatomical priors and disease-specific constraints to ensure medical realism in generated samples. A novel discriminator design enforces structural consistency while a gradient penalty improves training stability. Radiologists achieved only 58% accuracy in distinguishing real from synthetic chest CT scans, validating perceptual realism. Downstream classification models trained with augmented data show 8.4% improvement in rare disease detection compared to baseline data augmentation techniques."
+  },
+  {
+    "research_id": "24BCE1010",
+    "paper_title": "Natural Language Generation for Automated Financial Report Summarization",
+    "author": "Lakshmi Chandrasekaran",
+    "institution": "VIT Chennai",
+    "journal": "Expert Systems with Applications",
+    "year": 2024,
+    "keywords": ["NLG", "financial reports", "text summarization", "GPT", "automated reporting"],
+    "abstract": "This paper presents an automated system for generating human-quality summaries of corporate financial reports using large language model fine-tuning. We curate a domain-specific dataset of 15,000 annotated annual report summaries from Fortune 500 companies and develop a supervised fine-tuning pipeline for a GPT-based model. Our system extracts key financial metrics, identifies significant year-over-year changes, and generates coherent narrative summaries incorporating risk factors and management commentary. Human evaluations by certified financial analysts rate generated summaries as accurate and useful in 87% of cases, with average writing quality scores of 4.1 out of 5."
+  },
+  {
+    "research_id": "24BCE1011",
+    "paper_title": "Cybersecurity Threat Intelligence Using Machine Learning on Dark Web Data",
+    "author": "Suresh Balasubramanian",
+    "institution": "VIT Chennai",
+    "journal": "Computers and Security",
+    "year": 2024,
+    "keywords": ["cybersecurity", "threat intelligence", "dark web", "machine learning", "anomaly detection"],
+    "abstract": "We present a machine learning pipeline for automated extraction and classification of cybersecurity threat intelligence from dark web forums and marketplaces. Our system uses web crawling agents to collect raw data, followed by named entity recognition to identify threat actors, malware signatures, and targeted vulnerabilities. A multi-label classification model categorizes threats by type, urgency, and target industry with 89.2% accuracy. Integration with a SIEM platform demonstrates the operational value of automated dark web monitoring, enabling security teams to receive actionable threat alerts an average of 11 days before public disclosure of vulnerabilities."
+  },
+  {
+    "research_id": "24BCE1012",
+    "paper_title": "Explainable AI for Credit Scoring in Microfinance Institutions",
+    "author": "Ananya Gopal",
+    "institution": "VIT Chennai",
+    "journal": "Journal of Financial Regulation",
+    "year": 2024,
+    "keywords": ["explainable AI", "credit scoring", "microfinance", "XAI", "fairness", "SHAP"],
+    "abstract": "This research develops an explainable credit scoring system for microfinance institutions serving unbanked populations in rural India. We combine gradient boosting models with SHAP value explanations to provide loan officers with transparent, auditable credit decisions. The system incorporates alternative data sources including mobile phone usage patterns, agricultural cycle data, and community social graphs to assess creditworthiness without traditional credit history. Our model achieves 82.4% accuracy in default prediction while ensuring demographic fairness across gender and caste groups. Field trials with two microfinance NGOs demonstrate improved loan portfolio quality and increased applicant trust."
+  },
+  {
+    "research_id": "24BCE1013",
+    "paper_title": "Multi-Robot Coordination for Warehouse Automation Using Swarm Intelligence",
+    "author": "Naveen Kumar",
+    "institution": "VIT Chennai",
+    "journal": "Robotics and Autonomous Systems",
+    "year": 2024,
+    "keywords": ["swarm robotics", "warehouse automation", "multi-robot", "path planning", "coordination"],
+    "abstract": "We propose a swarm intelligence framework for coordinating large fleets of autonomous mobile robots in warehouse fulfillment operations. Our decentralized control architecture uses stigmergy-inspired communication where robots deposit virtual pheromones in a shared digital environment to coordinate picking routes and avoid congestion. A conflict-free path planning algorithm based on priority inheritance prevents deadlocks while maintaining throughput. Simulation experiments with fleets of up to 500 robots demonstrate 73% improvement in order fulfillment speed compared to centralized planning approaches, with the system remaining stable under 30% robot failure rates."
+  },
+  {
+    "research_id": "24BCE1014",
+    "paper_title": "Attention Mechanisms for Long Document Summarization in Legal Text Mining",
+    "author": "Pooja Ramachandran",
+    "institution": "VIT Chennai",
+    "journal": "Artificial Intelligence and Law",
+    "year": 2024,
+    "keywords": ["attention mechanism", "text summarization", "legal documents", "NLP", "transformer"],
+    "abstract": "This paper tackles the challenge of summarizing lengthy legal documents such as court judgments, contracts, and regulatory filings using hierarchical attention mechanisms. We introduce a paragraph-level encoder that captures structural features of legal text before feeding into a document-level transformer decoder. Our model is trained on a dataset of 40,000 Indian Supreme Court judgments paired with headnotes written by legal professionals. Automatic evaluation shows ROUGE-L scores of 42.3, while a blind evaluation by practicing lawyers rates 79% of generated summaries as legally accurate and practically useful for case preparation."
+  },
+  {
+    "research_id": "24BCE1015",
+    "paper_title": "Neuromorphic Computing for Ultra-Low-Power Pattern Recognition at the Edge",
+    "author": "Harish Ramakrishnan",
+    "institution": "VIT Chennai",
+    "journal": "Nature Electronics",
+    "year": 2024,
+    "keywords": ["neuromorphic computing", "spiking neural networks", "edge AI", "low power", "pattern recognition"],
+    "abstract": "We present a neuromorphic processor architecture based on spiking neural networks for energy-efficient pattern recognition on battery-powered edge devices. Our design implements leaky integrate-and-fire neurons with on-chip STDP learning in a 28nm CMOS process, consuming only 0.8mW average power during inference. The architecture supports real-time processing of audio, vibration, and thermal sensor streams for industrial predictive maintenance applications. On-device anomaly detection achieves 93.7% accuracy with average latency of 1.2ms, while consuming 100x less energy than equivalent LSTM implementations on ARM Cortex-M processors."
+  },
+  {
+    "research_id": "24BCE1016",
+    "paper_title": "Semantic Segmentation of Satellite Imagery for Urban Land Use Classification",
+    "author": "Deepika Sundaram",
+    "institution": "VIT Chennai",
+    "journal": "Remote Sensing of Environment",
+    "year": 2024,
+    "keywords": ["semantic segmentation", "satellite imagery", "urban planning", "remote sensing", "deep learning"],
+    "abstract": "We develop a deep learning pipeline for automated semantic segmentation of high-resolution satellite images to support urban land use classification and planning. Our encoder-decoder architecture combines a pretrained vision transformer backbone with a multi-scale feature pyramid network and achieves state-of-the-art performance on the SpaceNet and DOTA datasets. We introduce a novel loss function that penalizes boundary confusion between semantically similar classes such as roads and parking lots. Applied to five Indian metropolitan areas, the system maps 23 land use categories with 88.6% overall accuracy, providing planners with detailed temporal change analysis over five-year satellite image series."
+  },
+  {
+    "research_id": "24BCE1017",
+    "paper_title": "Zero-Shot Learning for Industrial Defect Detection in Manufacturing Quality Control",
+    "author": "Rohit Seshadri",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Industrial Informatics",
+    "year": 2024,
+    "keywords": ["zero-shot learning", "defect detection", "manufacturing", "quality control", "computer vision"],
+    "abstract": "This paper introduces a zero-shot learning framework for detecting previously unseen defect types in industrial manufacturing quality control systems. Traditional defect detection models require retraining when new defect categories emerge, causing costly production downtime. Our approach learns a semantic embedding space mapping visual defect features to textual descriptions, enabling recognition of novel defects from natural language specifications alone. Evaluated on PCB, textile, and metal surface inspection benchmarks, our model achieves 76.3% detection accuracy on unseen defect types without any visual training examples, reducing deployment time for new quality standards from weeks to hours."
+  },
+  {
+    "research_id": "24BCE1018",
+    "paper_title": "Differential Privacy Mechanisms for Federated Optimization in Machine Learning",
+    "author": "Kavitha Murthy",
+    "institution": "VIT Chennai",
+    "journal": "Journal of Machine Learning Research",
+    "year": 2024,
+    "keywords": ["differential privacy", "federated learning", "optimization", "privacy-preserving ML", "noise mechanisms"],
+    "abstract": "We analyze and improve differential privacy mechanisms for federated machine learning optimization, addressing the fundamental tension between privacy guarantees and model utility. Our work introduces an adaptive noise calibration scheme that allocates privacy budget based on gradient sensitivity across training rounds, significantly improving model accuracy under tight privacy constraints. We prove tight composition bounds for our mechanism and demonstrate that coordinated clipping strategies can reduce noise requirements by up to 60% on standard benchmarks. Experiments on image classification and language modeling confirm that our approach achieves state-of-the-art privacy-utility tradeoffs across multiple federated learning scenarios."
+  },
+  {
+    "research_id": "24BCE1019",
+    "paper_title": "Knowledge Graph Completion Using Relational Graph Convolutional Networks",
+    "author": "Sriram Parthasarathy",
+    "institution": "VIT Chennai",
+    "journal": "Knowledge-Based Systems",
+    "year": 2024,
+    "keywords": ["knowledge graphs", "graph convolutional networks", "link prediction", "relational learning", "embeddings"],
+    "abstract": "This research presents an improved relational graph convolutional network architecture for knowledge graph completion, addressing the challenge of predicting missing facts in large-scale knowledge bases. We introduce a type-constrained message passing scheme that respects ontological constraints during entity representation learning, preventing semantically invalid predictions. Our model incorporates both structural and textual features of entities and relations using a joint embedding framework. Evaluated on FB15k-237 and WN18RR benchmarks, our approach achieves mean reciprocal rank improvements of 8.3% and 6.1% respectively compared to the best baseline methods, with particularly strong gains on rare entity types."
+  },
+  {
+    "research_id": "24BCE1020",
+    "paper_title": "Continual Learning for Adaptive Intrusion Detection Systems in Dynamic Networks",
+    "author": "Pradeep Nambiar",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Network and Service Management",
+    "year": 2024,
+    "keywords": ["continual learning", "intrusion detection", "network security", "catastrophic forgetting", "adaptive systems"],
+    "abstract": "We address the catastrophic forgetting problem in neural network-based intrusion detection systems that must continuously adapt to evolving cyber threats without forgetting previously learned attack patterns. Our proposed architecture employs elastic weight consolidation with dynamic memory replay to balance plasticity and stability. The system automatically clusters novel traffic patterns and triggers selective retraining when concept drift is detected, maintaining detection performance across all historical attack types. Evaluation on the CIC-IDS-2017 and NSL-KDD datasets demonstrates that our approach maintains 96.2% detection accuracy on past attacks while achieving 89.1% detection rate on newly introduced attack vectors, outperforming standard fine-tuning baselines significantly."
+  },
+  {
+    "research_id": "24BCE1021",
+    "paper_title": "Multimodal Emotion Recognition for Human-Robot Interaction Using Audio and Visual Cues",
+    "author": "Nithya Balakrishnan",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Affective Computing",
+    "year": 2024,
+    "keywords": ["emotion recognition", "multimodal learning", "human-robot interaction", "affective computing", "facial expression"],
+    "abstract": "This paper develops a multimodal emotion recognition system for enabling robots to respond empathetically to human emotional states during natural interaction. We fuse audio features derived from voice pitch, rhythm, and spectral properties with visual features from facial expression analysis and body pose estimation using a cross-modal attention mechanism. Our model is trained on a diverse dataset capturing 8 emotional categories across different age groups, lighting conditions, and cultural backgrounds. The fused model achieves 87.4% recognition accuracy, a 12% improvement over single-modality approaches. Real-world deployment on a social robot demonstrates significantly improved user satisfaction scores compared to emotion-unaware interaction baselines."
+  },
+  {
+    "research_id": "24BCE1022",
+    "paper_title": "Cooperative Spectrum Sensing in Cognitive Radio Networks Using Deep Reinforcement Learning",
+    "author": "Ganesh Subramanian",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Cognitive Communications",
+    "year": 2024,
+    "keywords": ["cognitive radio", "spectrum sensing", "deep reinforcement learning", "dynamic spectrum access", "wireless networks"],
+    "abstract": "We present a deep reinforcement learning approach for cooperative spectrum sensing in cognitive radio networks that maximizes spectral efficiency while protecting primary user transmissions. Multiple secondary user agents learn coordinated sensing and access strategies through a centralized training, decentralized execution paradigm. Our multi-agent RL framework handles partial observability and communication constraints between sensing nodes. Simulation results show that our approach achieves 94.7% detection probability while maintaining false alarm rates below 5% in environments with 30 frequency channels and varying primary user activity patterns, outperforming energy detection baselines by 18% in throughput."
+  },
+  {
+    "research_id": "24BCE1023",
+    "paper_title": "Personalized Recommendation Systems Using Contrastive Learning on User Behavior Graphs",
+    "author": "Anusha Krishnamurthy",
+    "institution": "VIT Chennai",
+    "journal": "ACM Conference on Recommender Systems",
+    "year": 2024,
+    "keywords": ["recommendation systems", "contrastive learning", "user behavior", "graph neural networks", "personalization"],
+    "abstract": "We propose a contrastive learning framework for personalized recommendation that addresses data sparsity and cold-start problems by leveraging multi-relational user behavior graphs. Our model constructs bipartite graphs connecting users to items through heterogeneous interaction types including purchases, views, ratings, and wishlisting, then learns unified representations via graph contrastive objectives. Augmentation strategies including node dropout and edge perturbation generate diverse training views that improve representation robustness. Extensive experiments on Amazon, Yelp, and MovieLens datasets demonstrate consistent improvements of 7-15% in NDCG@10 compared to strong collaborative filtering baselines, with particularly strong gains for new users with sparse interaction histories."
+  },
+  {
+    "research_id": "24BCE1024",
+    "paper_title": "Automated Program Repair Using Neural Code Generation and Semantic Patch Validation",
+    "author": "Bharath Chandrasekaran",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Software Engineering",
+    "year": 2024,
+    "keywords": ["automated program repair", "code generation", "neural networks", "software engineering", "bug fixing"],
+    "abstract": "This paper presents an automated program repair system that uses transformer-based code generation to synthesize and validate patches for software bugs. Given a buggy program and failing test cases, our system extracts fault localization features and constructs a repair context for a fine-tuned CodeT5 model that generates candidate patches. A semantic patch validator uses symbolic execution to verify that generated patches are behaviorally correct and do not introduce regressions. Evaluated on the Defects4J benchmark of real Java bugs, our approach correctly repairs 67 out of 395 bugs, representing a 23% improvement over the previous best automated repair system and demonstrating the practical potential of neural approaches to software maintenance."
+  },
+  {
+    "research_id": "24BCE1025",
+    "paper_title": "Energy-Efficient Neural Architecture Search for Embedded Computer Vision",
+    "author": "Ranjani Selvaraj",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Circuits and Systems for AI",
+    "year": 2024,
+    "keywords": ["neural architecture search", "embedded systems", "energy efficiency", "computer vision", "hardware-aware NAS"],
+    "abstract": "We introduce a hardware-aware neural architecture search methodology that jointly optimizes classification accuracy, inference latency, and energy consumption for deploying computer vision models on embedded processors. Our differentiable NAS framework incorporates hardware performance models for ARM Cortex-A and RISC-V targets directly into the search objective, enabling Pareto-optimal architecture discovery without requiring physical device measurements during search. Multi-objective evolutionary refinement produces final architectures on the accuracy-efficiency frontier. Discovered models achieve 78.3% top-1 accuracy on ImageNet while consuming only 12mJ per inference on a Raspberry Pi 4, representing a 3.2x energy improvement over MobileNetV3 at comparable accuracy."
+  },
+  {
+    "research_id": "24BCE1026",
+    "paper_title": "Adversarial Robustness of Medical Diagnosis Systems Against Image Perturbation Attacks",
+    "author": "Shalini Venkataraman",
+    "institution": "VIT Chennai",
+    "journal": "MICCAI Workshops on Trustworthy AI in Radiology",
+    "year": 2024,
+    "keywords": ["adversarial attacks", "medical AI", "robustness", "deep learning", "image perturbations"],
+    "abstract": "This research investigates the vulnerability of deep learning based medical diagnosis systems to adversarial image perturbation attacks and develops certified defense mechanisms. We demonstrate that small imperceptible perturbations to retinal fundus and dermatoscopy images can cause diagnostic models to produce completely wrong predictions, posing serious patient safety risks. We develop a randomized smoothing framework adapted for medical image classifiers that provides provable robustness certificates against L2-norm bounded attacks. Certified defense training reduces attack success rates from 94% to below 3% while maintaining clinical accuracy within 1.8% of undefended baselines on diabetic retinopathy and melanoma detection benchmarks."
+  },
+  {
+    "research_id": "24BCE1027",
+    "paper_title": "Time Series Anomaly Detection in Industrial IoT Sensors Using Variational Autoencoders",
+    "author": "Manikandan Annamalai",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Internet of Things Journal",
+    "year": 2024,
+    "keywords": ["anomaly detection", "IoT", "variational autoencoder", "time series", "predictive maintenance"],
+    "abstract": "We develop a variational autoencoder framework for unsupervised anomaly detection in multivariate time series data from industrial IoT sensor networks. Our model learns compact latent representations of normal sensor behavior, enabling detection of anomalies as high reconstruction error events without requiring labeled failure examples. A temporal attention module captures long-range dependencies between sensor readings while a hierarchical encoder handles data streams with varying sampling rates. Applied to vibration, temperature, and pressure sensors in a wind turbine farm, the system detects bearing failures 72 hours in advance with 91.3% recall and 4.7% false alarm rate, enabling planned maintenance and avoiding unscheduled downtime."
+  },
+  {
+    "research_id": "24BCE1028",
+    "paper_title": "Semantic Communication Systems for 6G Networks Using Deep Learning Compression",
+    "author": "Janani Murugesan",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Journal on Selected Areas in Communications",
+    "year": 2024,
+    "keywords": ["semantic communication", "6G", "deep learning", "compression", "channel coding", "wireless"],
+    "abstract": "This paper proposes a semantic communication system for next-generation 6G networks that transmits task-relevant meaning rather than raw bit representations, dramatically improving bandwidth efficiency. We co-design a semantic encoder-decoder pair using deep learning to jointly optimize channel coding and semantic compression for image and text transmission tasks. Our knowledge-based semantic encoder extracts task-critical features while a channel-adaptive decoder reconstructs semantically accurate messages from received noisy signals. Simulations over AWGN and Rayleigh fading channels demonstrate that our system requires 60% less bandwidth than traditional digital communication at equivalent semantic fidelity, with robust performance maintained at SNR levels as low as -5dB."
+  },
+  {
+    "research_id": "24BCE1029",
+    "paper_title": "Causal Inference Methods for Estimating Treatment Effects in Observational Health Studies",
+    "author": "Vignesh Rajagopal",
+    "institution": "VIT Chennai",
+    "journal": "American Journal of Epidemiology",
+    "year": 2024,
+    "keywords": ["causal inference", "treatment effects", "health studies", "observational data", "propensity score", "counterfactual"],
+    "abstract": "We develop and compare causal inference methodologies for estimating heterogeneous treatment effects from large-scale observational health datasets where randomized trials are infeasible. Our framework combines doubly-robust estimators with causal forest models to identify subgroups with differential treatment responses. Addressing high-dimensional confounding from electronic health records requires novel covariate balancing techniques based on entropy balancing and neural propensity scores. We validate our approach on synthetic data with known causal structure before applying it to estimate effects of antihypertensive treatment on cardiovascular outcomes in a cohort of 180,000 patients, revealing significant effect heterogeneity across age and comorbidity subgroups."
+  },
+  {
+    "research_id": "24BCE1030",
+    "paper_title": "Autonomous Drone Swarms for Search and Rescue Operations in Disaster Scenarios",
+    "author": "Keerthi Ravi",
+    "institution": "VIT Chennai",
+    "journal": "Journal of Field Robotics",
+    "year": 2024,
+    "keywords": ["drone swarms", "search and rescue", "disaster response", "autonomous systems", "multi-agent"],
+    "abstract": "We present a fully autonomous drone swarm system for conducting search and rescue operations in GPS-denied disaster environments such as collapsed buildings and flooded terrain. Our coordination algorithm enables swarms of up to 50 drones to collaboratively map unknown environments, detect human survivors using thermal imaging and acoustic sensors, and relay position information back to rescue teams through a mesh communication network. Individual drones maintain decentralized estimates of explored terrain and share gradient information to maximize coverage efficiency. Field tests conducted in a simulated disaster site demonstrate 94% survivor detection rate within 18 minutes, compared to 71% for a single drone in the same time window."
+  },
+  {
+    "research_id": "24BCE1031",
+    "paper_title": "Large-Scale Distributed Training of Foundation Models with Efficient Gradient Compression",
+    "author": "Siddharth Ramaswamy",
+    "institution": "VIT Chennai",
+    "journal": "Proceedings of Machine Learning Research",
+    "year": 2024,
+    "keywords": ["distributed training", "foundation models", "gradient compression", "large-scale ML", "communication efficiency"],
+    "abstract": "This paper addresses communication bottlenecks in large-scale distributed training of foundation language and vision models across thousands of GPU nodes. We develop a hierarchical gradient compression scheme that applies aggressive sparsification at intra-node level and quantization at inter-rack communication level, tailoring compression ratios to available bandwidth at each network tier. An error feedback mechanism prevents compression artifacts from degrading convergence. Training GPT-scale models across 2048 A100 GPUs, our method reduces total communication volume by 78% while achieving identical final perplexity compared to uncompressed gradient all-reduce, cutting wall-clock training time by 41% on standard transformer language model benchmarks."
+  },
+  {
+    "research_id": "24BCE1032",
+    "paper_title": "Self-Supervised Learning for Video Representation Using Temporal Contrastive Objectives",
+    "author": "Ramya Narayanan",
+    "institution": "VIT Chennai",
+    "journal": "International Journal of Computer Vision",
+    "year": 2024,
+    "keywords": ["self-supervised learning", "video representation", "contrastive learning", "temporal modeling", "visual features"],
+    "abstract": "We propose a self-supervised learning framework for learning rich video representations without manual annotations by exploiting temporal structure inherent in video data. Our approach constructs positive pairs from temporally adjacent video segments and applies augmentation strategies including speed perturbation, frame masking, and color jitter to create challenging contrastive learning objectives. A hierarchical spatiotemporal encoder captures both local motion dynamics and global scene semantics in unified representations. Pretrained on unlabeled YouTube videos, our model achieves strong transfer performance on Kinetics-400 action recognition and UCF-101 retrieval benchmarks, matching supervised baselines while requiring no labeled video data during pretraining."
+  },
+  {
+    "research_id": "24BCE1033",
+    "paper_title": "Automated Essay Scoring Using Multi-Task Learning with Argument Structure Analysis",
+    "author": "Ishwarya Saravanan",
+    "institution": "VIT Chennai",
+    "journal": "Proceedings of EMNLP",
+    "year": 2024,
+    "keywords": ["automated essay scoring", "multi-task learning", "argumentation", "NLP", "writing assessment"],
+    "abstract": "This research presents an automated essay scoring system that simultaneously evaluates holistic quality and fine-grained writing dimensions including argument coherence, evidence quality, and organizational structure. We formulate essay scoring as a multi-task learning problem where shared representations benefit all scoring dimensions, and auxiliary tasks including discourse structure parsing and claim-evidence linking provide interpretable feedback. Our system is trained on the Automated Student Assessment Prize dataset and achieves quadratic weighted kappa of 0.836 for holistic scoring. A separate analytical feedback generator provides students with specific, actionable writing improvement suggestions derived from the model's argument structure analysis."
+  },
+  {
+    "research_id": "24BCE1034",
+    "paper_title": "Adversarial Domain Adaptation for Cross-Lingual Named Entity Recognition",
+    "author": "Balaji Thyagarajan",
+    "institution": "VIT Chennai",
+    "journal": "Transactions of the Association for Computational Linguistics",
+    "year": 2024,
+    "keywords": ["domain adaptation", "named entity recognition", "cross-lingual", "adversarial training", "multilingual NLP"],
+    "abstract": "We develop an adversarial domain adaptation framework for transferring named entity recognition models across languages without requiring labeled data in target languages. Our approach trains a language-adversarial encoder that learns representations invariant to language identity while preserving semantic content useful for entity recognition. A gradient reversal layer encourages the encoder to confuse a language discriminator while entity recognition performance is optimized jointly. Zero-shot transfer experiments across 8 language pairs from CoNLL and WikiNER benchmarks show average F1 improvements of 9.7% over multilingual BERT baseline, with particularly strong gains for morphologically rich low-resource languages including Tamil, Telugu, and Swahili."
+  },
+  {
+    "research_id": "24BCE1035",
+    "paper_title": "Structural Health Monitoring of Civil Infrastructure Using Vibration-Based Deep Learning",
+    "author": "Sathya Krishnan",
+    "institution": "VIT Chennai",
+    "journal": "Engineering Structures",
+    "year": 2024,
+    "keywords": ["structural health monitoring", "civil engineering", "vibration analysis", "deep learning", "damage detection"],
+    "abstract": "We present a deep learning system for continuous structural health monitoring of bridges, buildings, and dams by analyzing vibration sensor signals for early damage detection. Our 1D convolutional neural network with dilated convolutions captures multi-scale temporal patterns in acceleration data and classifies structural states across five damage severity levels. Transfer learning from a large dataset of simulated structural responses enables effective deployment with limited real sensor data from new structures. Validation on the Los Alamos National Laboratory benchmark structures demonstrates 96.8% damage detection accuracy, and a field deployment on the Pamban railway bridge shows successful identification of minor bearing degradation months before scheduled inspection."
+  },
+  {
+    "research_id": "24BCE1036",
+    "paper_title": "Privacy-Aware Synthetic Data Generation for Healthcare Research Using Diffusion Models",
+    "author": "Priyanka Sundaresan",
+    "institution": "VIT Chennai",
+    "journal": "npj Digital Medicine",
+    "year": 2024,
+    "keywords": ["synthetic data", "privacy", "diffusion models", "healthcare", "electronic health records"],
+    "abstract": "This paper proposes using latent diffusion models for generating realistic synthetic electronic health records that preserve statistical properties of original patient data while providing strong privacy guarantees. We design a tabular diffusion architecture handling mixed data types including continuous vitals, categorical diagnoses, and temporal medication sequences. Our privacy evaluation combines differential privacy analysis with membership inference attack testing to formally characterize information leakage. Downstream ML models trained on synthetic data achieve 94% of the performance of models trained on real data for mortality prediction and readmission classification, enabling open sharing of medical datasets for research without compromising individual patient privacy."
+  },
+  {
+    "research_id": "24BCE1037",
+    "paper_title": "Hierarchical Reinforcement Learning for Long-Horizon Robot Manipulation Tasks",
+    "author": "Rajesh Subramanian",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Robotics",
+    "year": 2024,
+    "keywords": ["hierarchical RL", "robot manipulation", "long-horizon tasks", "skill learning", "robot learning"],
+    "abstract": "We develop a hierarchical reinforcement learning framework that enables robots to learn complex long-horizon manipulation tasks by decomposing them into reusable primitive skills. Our two-level hierarchy consists of a goal-conditioned skill library of atomic manipulation primitives and a high-level planner that sequences skills to achieve task objectives. Skills are discovered automatically through information-theoretic empowerment maximization without requiring manual specification. The framework is evaluated on a suite of tabletop manipulation tasks including multi-object assembly and tool-use scenarios. Our approach learns 8-stage tasks in 40% fewer environment interactions than flat RL baselines and demonstrates zero-shot generalization to novel goal configurations not seen during training."
+  },
+  {
+    "research_id": "24BCE1038",
+    "paper_title": "Crowd Flow Prediction for Urban Mobility Management Using Spatio-Temporal Graph Networks",
+    "author": "Hema Vasudevan",
+    "institution": "VIT Chennai",
+    "journal": "Transportation Research Part B",
+    "year": 2024,
+    "keywords": ["crowd flow prediction", "urban mobility", "spatio-temporal", "graph networks", "city planning"],
+    "abstract": "We propose a spatio-temporal graph neural network model for predicting crowd flow patterns across urban areas to support mobility management and event planning. Our model constructs dynamic mobility graphs from anonymized mobile phone data where nodes represent geographic zones and edges encode travel demand between zones. Temporal attention modules capture daily, weekly, and event-driven periodicity patterns while spatial message passing propagates flow changes through the connected urban network. Predictions for Chennai metropolitan area achieve mean absolute error of 8.3% on hourly zone-level crowd counts, enabling city authorities to proactively manage public transportation capacity and emergency response resource allocation."
+  },
+  {
+    "research_id": "24BCE1039",
+    "paper_title": "Constitutional AI Alignment Techniques for Safe Language Model Deployment",
+    "author": "Arun Krishnaswamy",
+    "institution": "VIT Chennai",
+    "journal": "AI Safety Conference Proceedings",
+    "year": 2024,
+    "keywords": ["AI alignment", "language models", "safety", "RLHF", "constitutional AI", "harmful content"],
+    "abstract": "This paper examines and extends constitutional AI techniques for aligning large language models with human values and safety requirements during deployment. We investigate how preference-based fine-tuning with carefully designed constitutional principles affects model behavior across domains including harmful content generation, factual accuracy, and instruction following. Our experiments compare reward modeling approaches including human feedback, AI feedback, and hybrid methods across model scales from 7B to 70B parameters. We find that constitutional prompting significantly reduces harmful outputs by 67% while maintaining 98% of baseline task performance, and that larger models show stronger alignment generalization to novel safety scenarios not explicitly covered during fine-tuning."
+  },
+  {
+    "research_id": "24BCE1040",
+    "paper_title": "Wearable EEG-Based Brain-Computer Interface for Motor Imagery Rehabilitation",
+    "author": "Dhivya Murugesan",
+    "institution": "VIT Chennai",
+    "journal": "Journal of Neural Engineering",
+    "year": 2024,
+    "keywords": ["brain-computer interface", "EEG", "motor imagery", "rehabilitation", "neural signal processing"],
+    "abstract": "We develop a wearable brain-computer interface system for motor rehabilitation of stroke patients based on electroencephalography decoding of motor imagery signals. Our signal processing pipeline includes artifact removal using independent component analysis, feature extraction combining wavelet decomposition and Riemannian geometry, and a compact neural network classifier adapted for real-time inference on a wearable processor. The system achieves 84.7% four-class motor imagery classification accuracy across 15 patients in clinical trials. Neurofeedback delivered through functional electrical stimulation of affected limbs shows statistically significant improvement in upper limb motor function scores after 8 weeks of daily 30-minute rehabilitation sessions."
+  },
+  {
+    "research_id": "24BCE1041",
+    "paper_title": "Multi-Objective Optimization of 5G Network Slicing Using Deep Q-Networks",
+    "author": "Kiran Balasubramanian",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Mobile Computing",
+    "year": 2024,
+    "keywords": ["network slicing", "5G", "deep Q-network", "resource optimization", "telecommunications"],
+    "abstract": "This paper addresses the multi-objective resource allocation problem in 5G network slicing where competing slice requirements for eMBB, URLLC, and mMTC services must be simultaneously satisfied. We formulate slice resource management as a constrained multi-objective Markov decision process and solve it using a modified deep Q-network with a Pareto-aware action selection strategy. Our approach dynamically adjusts bandwidth, computing, and latency allocations across slices in response to traffic fluctuations while respecting service level agreements. Simulation experiments on realistic 5G traffic models demonstrate that our system satisfies SLA requirements 99.3% of the time while improving average resource utilization from 61% to 84% compared to static provisioning approaches."
+  },
+  {
+    "research_id": "24BCE1042",
+    "paper_title": "Interpretable Machine Learning for Predictive Policing Risk Assessment",
+    "author": "Nalini Subramaniam",
+    "institution": "VIT Chennai",
+    "journal": "AI and Society",
+    "year": 2024,
+    "keywords": ["interpretable ML", "predictive policing", "risk assessment", "fairness", "bias", "criminal justice"],
+    "abstract": "We critically analyze and redesign predictive policing risk assessment tools to address fairness, transparency, and accountability concerns while maintaining predictive utility. Our analysis of existing tools reveals substantial demographic disparities in false positive rates that disproportionately affect minority communities. We develop an interpretable model combining decision trees with calibrated uncertainty estimation that provides human-readable explanations for risk scores. A novel fairness constraint based on equalized odds across demographic groups is integrated directly into the training objective. Retrospective evaluation demonstrates that our model reduces racial disparity in false positive rates from 2.4x to 1.1x while maintaining comparable predictive accuracy, with significantly higher auditability for legal review."
+  },
+  {
+    "research_id": "24BCE1043",
+    "paper_title": "Few-Shot Learning for Rare Disease Diagnosis Using Prototypical Networks",
+    "author": "Supriya Natarajan",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Journal of Biomedical and Health Informatics",
+    "year": 2024,
+    "keywords": ["few-shot learning", "rare diseases", "diagnosis", "prototypical networks", "medical AI"],
+    "abstract": "We develop a few-shot learning system for diagnosing rare diseases from clinical presentations where only a handful of labeled training cases per disease are available. Our prototypical network architecture learns a feature embedding space where rare disease categories form compact clusters separable from common diagnoses. Episode-based meta-training on common diseases teaches generalizable diagnostic feature representations that transfer effectively to rare disease classification with only 5-10 examples. The system is evaluated on 127 rare disease categories from the NORD database and achieves 73.2% accuracy in 5-shot classification, compared to 51.4% for standard fine-tuning approaches, demonstrating substantially better data efficiency for rare medical conditions."
+  },
+  {
+    "research_id": "24BCE1044",
+    "paper_title": "Provably Correct Neural Network Verification Using Abstract Interpretation",
+    "author": "Gowtham Venkatesh",
+    "institution": "VIT Chennai",
+    "journal": "ACM SIGPLAN Conference on Programming Languages",
+    "year": 2024,
+    "keywords": ["neural network verification", "formal methods", "abstract interpretation", "safety", "provable AI"],
+    "abstract": "This paper presents a scalable framework for formal verification of safety properties in deep neural networks using abstract interpretation techniques. We develop novel abstract domains specifically designed to efficiently bound neural network computations including ReLU and normalization layers, enabling tight over-approximations of network output sets given bounded input perturbations. Our verification tool NEURALABS proves local robustness properties for ResNet-50 on ImageNet within minutes per query, whereas previous tools timeout on similar-sized networks. We apply formal verification to certify obstacle avoidance safety properties for a neural network controller in a simulated autonomous vehicle, demonstrating practical formal safety analysis for real-world deep learning systems."
+  },
+  {
+    "research_id": "24BCE1045",
+    "paper_title": "Underwater Acoustic Signal Processing for Marine Mammal Communication Analysis",
+    "author": "Archana Mani",
+    "institution": "VIT Chennai",
+    "journal": "Journal of the Acoustical Society of America",
+    "year": 2024,
+    "keywords": ["underwater acoustics", "marine biology", "signal processing", "bioacoustics", "deep learning"],
+    "abstract": "We develop automated signal processing and machine learning tools for analyzing communication signals of dolphins and whales recorded in the Indian Ocean. Our pipeline processes raw hydrophone recordings using short-time Fourier transforms and denoising autoencoders to extract clean vocalizations from ambient ocean noise. A spectrogram-based CNN classifies 47 distinct call types used by bottlenose dolphins with 88.9% accuracy. Unsupervised clustering of call sequences reveals temporal patterns in social interaction that correspond to known behavioral contexts including foraging, mating, and mother-calf bonding. The system enables non-invasive monitoring of marine mammal social behavior at scale across acoustic recorder networks."
+  },
+  {
+    "research_id": "24BCE1046",
+    "paper_title": "Decentralized Finance Protocols Security Analysis and Vulnerability Detection",
+    "author": "Praveen Thiruvenkatam",
+    "institution": "VIT Chennai",
+    "journal": "ACM Conference on Financial Cryptography",
+    "year": 2024,
+    "keywords": ["DeFi", "blockchain security", "smart contract vulnerabilities", "protocol analysis", "cryptocurrency"],
+    "abstract": "This research conducts comprehensive security analysis of decentralized finance protocol smart contracts and develops automated vulnerability detection tools. We systematically characterize attack patterns including reentrancy, flash loan manipulation, oracle manipulation, and governance attacks through formal analysis of 2,847 deployed DeFi contracts. Our symbolic execution tool augmented with DeFi-specific vulnerability patterns detects 94% of known vulnerability classes with 12% false positive rate. Analysis reveals that 23% of audited contracts contain at least one high-severity vulnerability, and we trace $840M in historical DeFi exploits to vulnerability categories our tool can detect, motivating pre-deployment security auditing requirements."
+  },
+  {
+    "research_id": "24BCE1047",
+    "paper_title": "Climate Change Impact Prediction Using Ensemble Deep Learning on Climate Model Outputs",
+    "author": "Revathi Chandran",
+    "institution": "VIT Chennai",
+    "journal": "Nature Climate Change",
+    "year": 2024,
+    "keywords": ["climate change", "ensemble learning", "deep learning", "climate models", "prediction", "environmental science"],
+    "abstract": "We develop an ensemble deep learning framework that combines outputs from multiple global climate models to produce improved regional climate projections for South Asia through 2100. Our architecture uses a convolutional network to capture spatial patterns and an LSTM to model temporal evolution of climate variables, trained to optimally weight and correct for systematic biases in constituent climate models. Validation against historical observations from 1950-2023 shows 34% improvement in precipitation prediction error over individual climate model means. Regional projections indicate 2.1-4.3°C warming in Tamil Nadu with 15-28% reduction in summer monsoon rainfall under RCP 8.5, with critical implications for agricultural water management and coastal flood risk planning."
+  },
+  {
+    "research_id": "24BCE1048",
+    "paper_title": "Biometric Authentication Using Keystroke Dynamics and Behavioral Profiling",
+    "author": "Murali Krishnaswamy",
+    "institution": "VIT Chennai",
+    "journal": "IEEE Transactions on Information Forensics and Security",
+    "year": 2024,
+    "keywords": ["biometrics", "keystroke dynamics", "behavioral authentication", "continuous authentication", "security"],
+    "abstract": "This paper presents a continuous authentication system based on keystroke dynamics and mouse movement behavioral profiling for detecting unauthorized access to computing systems after initial login. We collect timing features from keystroke sequences and trajectory features from mouse movements, fusing them through a time-series neural network with adaptive windowing. Unlike static biometric systems, our model continuously updates user behavioral profiles using online learning to account for natural behavioral drift over time. Evaluated on a dataset of 150 users over 6 months of naturalistic computer usage, the system achieves equal error rate of 2.3% for impostor detection with average detection latency of 47 seconds, enabling timely session termination for compromised accounts."
+  },
+  {
+    "research_id": "24BCE1049",
+    "paper_title": "Optical Flow Estimation for Endoscopic Video Analysis in Minimally Invasive Surgery",
+    "author": "Pavithra Suresh",
+    "institution": "VIT Chennai",
+    "journal": "Medical Image Analysis",
+    "year": 2024,
+    "keywords": ["optical flow", "endoscopy", "surgical AI", "computer vision", "minimally invasive surgery"],
+    "abstract": "We develop specialized optical flow estimation methods for analyzing endoscopic video during minimally invasive surgical procedures, addressing challenges of textureless tissue surfaces, specular highlights, and tool occlusions. Our deep optical flow network is pretrained on synthetic endoscopy data generated using physically-based tissue rendering and fine-tuned on real laparoscopic videos with sparse ground truth annotations. Tissue deformation modeling using biomechanical priors improves flow accuracy near surgical tool boundaries. Downstream applications including automated gesture recognition for surgeon skill assessment and real-time tissue tracking for augmented reality overlays demonstrate 23% and 31% improvements respectively over general-purpose optical flow methods on standardized surgical datasets."
+  },
+  {
+    "research_id": "24BCE1050",
+    "paper_title": "Hyperspectral Image Classification for Agricultural Crop Health Monitoring",
+    "author": "Thamizharasi Selvaraj",
+    "institution": "VIT Chennai",
+    "journal": "Precision Agriculture",
+    "year": 2024,
+    "keywords": ["hyperspectral imaging", "agriculture", "crop monitoring", "remote sensing", "classification", "plant health"],
+    "abstract": "We present a deep learning system for classifying crop health status from drone-mounted hyperspectral camera imagery to support precision agriculture interventions. Our 3D convolutional network simultaneously extracts spatial texture features and spectral signature patterns across 120 wavelength bands to identify nitrogen deficiency, water stress, fungal infection, and pest damage in rice and sugarcane fields. A semi-supervised training strategy with pseudo-labeling enables effective use of abundant unlabeled hyperspectral imagery alongside limited expert-annotated training data. Field validation across five farms in Tamil Nadu demonstrates 92.4% classification accuracy across six crop health categories, enabling targeted fertilizer and pesticide application that reduces agrochemical costs by 35% while maintaining or improving yields."
+  }
+]
