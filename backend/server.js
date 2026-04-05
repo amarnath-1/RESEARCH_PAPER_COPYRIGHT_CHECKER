@@ -120,7 +120,7 @@ function keywordOverlap(kw1, kw2) {
 
 const WEIGHTS = { StyleBERT: 0.35, GPTRadar: 0.25, AuthorNet: 0.20, CoAuthorGraph: 0.20 };
 
-function runAlgorithms(inputText, inputKeywords, stored) {
+function runAlgorithms(inputText, stored) {
   const inputTk  = removeStopwords(tokenize(inputText));
   const storedTk = removeStopwords(tokenize(stored.abstract));
 
@@ -128,10 +128,9 @@ function runAlgorithms(inputText, inputKeywords, stored) {
   const storedTF = termFrequency(storedTk);
   const StyleBERT    = Math.min(cosineSimilarity(inputTF, storedTF) * 2.2, 1);
 
-  const kwScore  = keywordOverlap(inputKeywords, stored.keywords);
   const titleTF  = termFrequency(removeStopwords(tokenize(stored.paper_title)));
   const titleCos = cosineSimilarity(inputTF, titleTF);
-  const AuthorNet= Math.min((kwScore * 0.6 + titleCos * 0.4) * 2.5, 1);
+  const AuthorNet= Math.min(titleCos * 2.5, 1);
 
   const bigram   = ngramSimilarity(inputTk, storedTk, 2);
   const trigram  = ngramSimilarity(inputTk, storedTk, 3);
@@ -235,7 +234,7 @@ app.get('/api/papers/:id', authMiddleware, (req, res) => {
 // ════════════════════════════════════════════════════════════════════════════════
 
 app.post('/api/detect', authMiddleware, (req, res) => {
-  const { paper_title, research_text, keywords } = req.body;
+  const { paper_title, research_text } = req.body;
 
   if (!paper_title || !research_text)
     return res.status(400).json({ success: false, message: 'paper_title and research_text are required.' });
@@ -243,10 +242,9 @@ app.post('/api/detect', authMiddleware, (req, res) => {
     return res.status(400).json({ success: false, message: 'research_text must be at least 20 words.' });
 
   const papers = loadPapers();
-  const submittedKeywords = keywords ? keywords.split(',').map(k => k.trim()).filter(Boolean) : [];
 
   const results = papers.map(stored => {
-    const scores = runAlgorithms(research_text, submittedKeywords, stored);
+    const scores = runAlgorithms(research_text, stored);
     const ws = weightedScore(scores);
     return {
       matched_paper: {
@@ -283,12 +281,14 @@ app.post('/api/detect', authMiddleware, (req, res) => {
     researcher_id: req.user.researcher_id,
     researcher_name: req.user.name,
     paper_title,
-    keywords: submittedKeywords,
     submitted_at: new Date().toISOString(),
     top_match_score: topMatch.weighted_score,
     top_match_paper: topMatch.matched_paper.paper_title,
     overall_verdict: topMatch.verdict,
     similar_count: flagged.length,
+    full_results: results,
+    flagged_results: flagged,
+    summary: { total_papers_checked: papers.length, similar_papers_found: flagged.length, top_match_score: topMatch.weighted_score, top_match_paper: topMatch.matched_paper.paper_title, overall_verdict: topMatch.verdict },
   };
   scans.push(scan);
   saveScans(scans);
@@ -300,7 +300,7 @@ app.post('/api/detect', authMiddleware, (req, res) => {
 
   res.json({
     success: true,
-    submission: { researcher_id: req.user.researcher_id, researcher_name: req.user.name, paper_title, keywords: submittedKeywords, submitted_at: scan.submitted_at },
+    submission: { researcher_id: req.user.researcher_id, researcher_name: req.user.name, paper_title, submitted_at: scan.submitted_at },
     summary: { total_papers_checked: papers.length, similar_papers_found: flagged.length, top_match_score: topMatch.weighted_score, top_match_paper: topMatch.matched_paper.paper_title, overall_verdict: topMatch.verdict },
     algorithm_weights: WEIGHTS,
     results,
@@ -312,6 +312,13 @@ app.post('/api/detect', authMiddleware, (req, res) => {
 app.get('/api/scans', authMiddleware, (req, res) => {
   const scans = loadScans().filter(s => s.user_id === req.user.id).reverse();
   res.json({ success: true, scans });
+});
+
+// GET /api/scans/:id — single scan with full results
+app.get('/api/scans/:id', authMiddleware, (req, res) => {
+  const scan = loadScans().find(s => s.id === req.params.id && s.user_id === req.user.id);
+  if (!scan) return res.status(404).json({ success: false, message: 'Scan not found' });
+  res.json({ success: true, scan });
 });
 
 // Health check
