@@ -18,5 +18,15 @@
     "department": "Electronics and Communication",
     "joined": "2026-04-05T16:56:50.788Z",
     "total_scans": 3
+  },
+  {
+    "id": "1776259055644",
+    "researcher_id": "24BCE5451",
+    "name": "Alex Geo Kishore",
+    "email": "alex@vit.ac.in",
+    "password": "$2a$10$9kOoHfKKUuaDTxqu.UOshOC/muQ2GhQwQZoVuSeKPzfqgcMFqwjaS",
+    "department": "Computer Science Engineering",
+    "joined": "2026-04-15T13:17:35.644Z",
+    "total_scans": 0
   }
 ]

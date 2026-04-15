@@ -299,6 +299,7 @@ A test account is pre-created for quick evaluation:
 | Password | `test123` |
 
 You can also create a new account using your own details via the **Register** tab.
+These credentials are saved and can be reused in the future without any loss in data
 
 ---
 
