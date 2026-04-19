@@ -252,10 +252,28 @@ function DetectionPage({ user }) {
   const [error, setError]         = useState('');
   const [result, setResult]       = useState(null);
   const [showAll, setShowAll]     = useState(false);
-  const resultRef   = useRef(null);
+  const resultRef    = useRef(null);
   const fileInputRef = useRef(null);
 
   const set = k => e => setForm(f=>({...f,[k]:e.target.value}));
+
+  // ✅ FIX 1: Reset the opposite mode's state when switching modes
+  // Previously switching modes left stale state which caused activeWC to
+  // compute incorrectly and the button to stay disabled unexpectedly.
+  function switchMode(mode) {
+    setInputMode(mode);
+    setError('');
+    if (mode === 'text') {
+      // Switching to paste mode — clear JSON state
+      setJsonFile(null);
+      setJsonFileName('');
+      setJsonError('');
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    } else {
+      // Switching to JSON mode — clear paste text state
+      setForm(f => ({ ...f, research_text: '' }));
+    }
+  }
 
   function handleJsonUpload(e) {
     const file = e.target.files?.[0];
@@ -271,28 +289,52 @@ function DetectionPage({ user }) {
         if (!text || typeof text !== 'string') {
           setJsonError('JSON must contain an "abstract", "text", "research_text", or "content" field.');
           setJsonFile(null); setJsonFileName('');
-        } else { setJsonFile(text); }
+        } else {
+          setJsonFile(text);
+        }
       } catch { setJsonError('Invalid JSON file.'); setJsonFile(null); setJsonFileName(''); }
     };
     reader.readAsText(file);
   }
 
-  function clearJson() { setJsonFile(null); setJsonFileName(''); setJsonError(''); if(fileInputRef.current) fileInputRef.current.value=''; }
+  function clearJson() {
+    setJsonFile(null); setJsonFileName(''); setJsonError('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }
 
-  const activeText = inputMode==='json' ? (jsonFile||'') : form.research_text;
+  const activeText = inputMode === 'json' ? (jsonFile || '') : form.research_text;
   const activeWC   = activeText.trim().split(/\s+/).filter(Boolean).length;
   const canSubmit  = !loading && form.paper_title.trim() && activeWC >= 20;
 
+  // ✅ FIX 2: Build a human-readable reason why the button is disabled
+  // This tells the user exactly what is still missing.
+  function getDisabledReason() {
+    if (loading) return null;
+    const reasons = [];
+    if (!form.paper_title.trim()) reasons.push('enter a paper title');
+    if (inputMode === 'json' && !jsonFile) reasons.push('upload a JSON file');
+    if (inputMode === 'text' && activeWC < 20) reasons.push(`add ${20 - activeWC} more word${20 - activeWC !== 1 ? 's' : ''}`);
+    if (reasons.length === 0) return null;
+    return '⚠ To run a scan: ' + reasons.join(', then ') + '.';
+  }
+  const disabledReason = getDisabledReason();
+
   async function runScan(e) {
     e.preventDefault(); setError(''); setLoading(true); setResult(null); setShowAll(false);
-    const researchText = inputMode==='json' ? (jsonFile||'') : form.research_text;
-    if (!researchText.trim()) { setError(inputMode==='json'?'Please upload a valid JSON file.':'Research text is required.'); setLoading(false); return; }
-    if (researchText.trim().split(/\s+/).filter(Boolean).length < 20) { setError('Research text must be at least 20 words.'); setLoading(false); return; }
+    const researchText = inputMode === 'json' ? (jsonFile || '') : form.research_text;
+    if (!researchText.trim()) {
+      setError(inputMode === 'json' ? 'Please upload a valid JSON file.' : 'Research text is required.');
+      setLoading(false); return;
+    }
+    if (researchText.trim().split(/\s+/).filter(Boolean).length < 20) {
+      setError('Research text must be at least 20 words.');
+      setLoading(false); return;
+    }
     try {
-      const { data } = await axios.post(API+'/detect', { paper_title:form.paper_title, research_text:researchText }, authHdr());
+      const { data } = await axios.post(API+'/detect', { paper_title: form.paper_title, research_text: researchText }, authHdr());
       setResult(data);
-      setTimeout(()=>resultRef.current?.scrollIntoView({behavior:'smooth',block:'start'}),100);
-    } catch(err) { setError(err.response?.data?.message||'Detection failed.'); }
+      setTimeout(() => resultRef.current?.scrollIntoView({ behavior:'smooth', block:'start' }), 100);
+    } catch(err) { setError(err.response?.data?.message || 'Detection failed.'); }
     finally { setLoading(false); }
   }
 
@@ -315,28 +357,52 @@ function DetectionPage({ user }) {
 
             <div className="form-field">
               <label>Paper Title <span className="req">*</span></label>
-              <input className="finput" placeholder="Enter the full title of your research paper" value={form.paper_title} onChange={set('paper_title')} required/>
+              <input
+                className="finput"
+                placeholder="Enter the full title of your research paper"
+                value={form.paper_title}
+                onChange={set('paper_title')}
+                required
+              />
             </div>
 
             <div className="form-field">
               <label>Research Content <span className="req">*</span></label>
+              {/* ✅ FIX 1: Use switchMode() instead of setInputMode() directly */}
               <div className="mode-toggle">
-                <button type="button" className={`mode-btn ${inputMode==='text'?'active':''}`} onClick={()=>setInputMode('text')}>✎ Paste Text</button>
-                <button type="button" className={`mode-btn ${inputMode==='json'?'active':''}`} onClick={()=>setInputMode('json')}>⊞ Upload JSON</button>
+                <button type="button" className={`mode-btn ${inputMode==='text'?'active':''}`} onClick={()=>switchMode('text')}>✎ Paste Text</button>
+                <button type="button" className={`mode-btn ${inputMode==='json'?'active':''}`} onClick={()=>switchMode('json')}>⊞ Upload JSON</button>
               </div>
             </div>
 
-            {inputMode==='text' && (
+            {inputMode === 'text' && (
               <div className="form-field">
-                <textarea className="ftextarea" rows={8} placeholder="Paste your research abstract or paper text here… (minimum 20 words)" value={form.research_text} onChange={set('research_text')}/>
-                <div className={`word-count ${activeWC<20?'low':'ok'}`}>{activeWC} words {activeWC<20?`— need ${20-activeWC} more`:'✓'}</div>
+                <textarea
+                  className="ftextarea"
+                  rows={8}
+                  placeholder="Paste your research abstract or paper text here… (minimum 20 words)"
+                  value={form.research_text}
+                  onChange={set('research_text')}
+                />
+                <div className={`word-count ${activeWC < 20 ? 'low' : 'ok'}`}>
+                  {activeWC} words {activeWC < 20 ? `— need ${20 - activeWC} more` : '✓'}
+                </div>
               </div>
             )}
 
-            {inputMode==='json' && (
+            {inputMode === 'json' && (
               <div className="form-field">
                 <p className="field-hint">Upload a <code>.json</code> file with an <code>"abstract"</code>, <code>"text"</code>, or <code>"content"</code> field.</p>
-                <div className="drop-zone" onClick={()=>fileInputRef.current?.click()}>
+
+                {/* ✅ FIX 3: Only trigger file picker click when no file is loaded yet.
+                    Previously the entire drop-zone (including the filled state) would
+                    re-open the file dialog on every click, making it impossible to
+                    interact normally after a file was uploaded. */}
+                <div
+                  className="drop-zone"
+                  onClick={() => { if (!jsonFile) fileInputRef.current?.click(); }}
+                  style={{ cursor: jsonFile ? 'default' : 'pointer' }}
+                >
                   {jsonFile ? (
                     <div className="drop-zone-filled">
                       <BrandMark size={28} dark={true}/>
@@ -344,7 +410,25 @@ function DetectionPage({ user }) {
                         <div className="drop-filename">{jsonFileName}</div>
                         <div className="drop-words">{activeWC} words extracted ✓</div>
                       </div>
-                      <button type="button" className="drop-clear" onClick={e=>{e.stopPropagation();clearJson();}}>✕ Remove</button>
+                      {/* ✅ FIX 4: "Change file" button lets user pick a different file
+                          without having to remove first. */}
+                      <div style={{ display:'flex', gap:'0.5rem' }}>
+                        <button
+                          type="button"
+                          className="drop-clear"
+                          style={{ background:'var(--ink-light)', color:'var(--cream)' }}
+                          onClick={e => { e.stopPropagation(); fileInputRef.current?.click(); }}
+                        >
+                          ⊞ Change
+                        </button>
+                        <button
+                          type="button"
+                          className="drop-clear"
+                          onClick={e => { e.stopPropagation(); clearJson(); }}
+                        >
+                          ✕ Remove
+                        </button>
+                      </div>
                     </div>
                   ) : (
                     <div className="drop-prompt">
@@ -354,15 +438,35 @@ function DetectionPage({ user }) {
                     </div>
                   )}
                 </div>
-                <input ref={fileInputRef} type="file" accept=".json" style={{display:'none'}} onChange={handleJsonUpload}/>
+
+                <input ref={fileInputRef} type="file" accept=".json" style={{ display:'none' }} onChange={handleJsonUpload}/>
                 {jsonError && <p className="field-error">{jsonError}</p>}
-                {jsonFile && <div className={`word-count ${activeWC<20?'low':'ok'}`}>{activeWC} words {activeWC<20?`— need ${20-activeWC} more`:'✓'}</div>}
+                {jsonFile && (
+                  <div className={`word-count ${activeWC < 20 ? 'low' : 'ok'}`}>
+                    {activeWC} words {activeWC < 20 ? `— need ${20 - activeWC} more` : '✓'}
+                  </div>
+                )}
               </div>
             )}
 
             <button type="submit" className="btn-scan" disabled={!canSubmit}>
-              {loading ? <><span className="spin-sm"/> Analysing against 50 papers…</> : '⊕ Run Copyright Detection Scan'}
+              {loading
+                ? <><span className="spin-sm"/> Analysing against 50 papers…</>
+                : '⊕ Run Copyright Detection Scan'}
             </button>
+
+            {/* ✅ FIX 2: Show exactly why the button is disabled so the user
+                knows what they still need to fill in. */}
+            {disabledReason && (
+              <p style={{
+                marginTop: '0.6rem',
+                fontSize: '0.82rem',
+                color: 'var(--amber)',
+                fontWeight: 500,
+              }}>
+                {disabledReason}
+              </p>
+            )}
           </form>
         </div>
       </div>
@@ -374,7 +478,7 @@ function DetectionPage({ user }) {
             <div className="panel">
               <div className="panel-hdr"><span className="panel-title">◈ Significant Matches ({result.flagged_results.length})</span></div>
               <div className="panel-body">
-                {result.flagged_results.map((r,i)=><MatchCard key={i} r={r} rank={i+1}/>)}
+                {result.flagged_results.map((r,i) => <MatchCard key={i} r={r} rank={i+1}/>)}
               </div>
             </div>
           )}
@@ -383,7 +487,9 @@ function DetectionPage({ user }) {
               <span className="panel-title">All Papers — Sorted by Similarity</span>
               <button className="btn-ghost" onClick={()=>setShowAll(v=>!v)}>{showAll?'Show Top 10':'Show All 50'}</button>
             </div>
-            <div style={{overflowX:'auto'}}><AllResultsTable results={showAll?result.results:result.results.slice(0,10)}/></div>
+            <div style={{overflowX:'auto'}}>
+              <AllResultsTable results={showAll ? result.results : result.results.slice(0,10)}/>
+            </div>
           </div>
         </div>
       )}
@@ -423,7 +529,7 @@ function AllResultsTable({ results }) {
         <tr><th>#</th><th>ID</th><th>Paper Title</th><th>StyleBERT</th><th>GPTRadar</th><th>AuthorNet</th><th>CoAuthorGraph</th><th>Total</th><th>Verdict</th></tr>
       </thead>
       <tbody>
-        {results.map((r,i)=>(
+        {results.map((r,i) => (
           <tr key={i}>
             <td className="td-muted mono">{i+1}</td>
             <td><span className="id-chip">{r.matched_paper.research_id}</span></td>
@@ -474,7 +580,7 @@ function MatchCard({ r, rank }) {
             ['GPTRadar','25%',r.algorithm_scores.GPTRadar,'N-gram matching','var(--amber)'],
             ['AuthorNet','20%',r.algorithm_scores.AuthorNet,'Title similarity','var(--red)'],
             ['CoAuthorGraph','20%',r.algorithm_scores.CoAuthorGraph,'Jaccard similarity','var(--sage)'],
-          ].map(([name,wt,val,desc,col])=>(
+          ].map(([name,wt,val,desc,col]) => (
             <div key={name} className="algo-row">
               <div className="algo-row-name"><span style={{color:col,fontWeight:600}}>{name}</span><span className="algo-row-wt">({wt})</span></div>
               <div className="pbar-wrap"><div className="pbar-fill" style={{width:`${val}%`,background:col}}/></div>
@@ -502,14 +608,14 @@ function PapersPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
-  useEffect(()=>{
-    axios.get(API+'/papers',authHdr()).then(r=>setPapers(r.data.papers||[])).catch(()=>{}).finally(()=>setLoading(false));
-  },[]);
+  useEffect(() => {
+    axios.get(API+'/papers', authHdr()).then(r=>setPapers(r.data.papers||[])).catch(()=>{}).finally(()=>setLoading(false));
+  }, []);
 
   const filtered = papers.filter(p=>
-    p.paper_title.toLowerCase().includes(search.toLowerCase())||
-    p.author.toLowerCase().includes(search.toLowerCase())||
-    p.research_id.toLowerCase().includes(search.toLowerCase())||
+    p.paper_title.toLowerCase().includes(search.toLowerCase()) ||
+    p.author.toLowerCase().includes(search.toLowerCase()) ||
+    p.research_id.toLowerCase().includes(search.toLowerCase()) ||
     (p.keywords||[]).some(k=>k.toLowerCase().includes(search.toLowerCase()))
   );
 
@@ -549,19 +655,19 @@ function PapersPage() {
 // SCAN DETAIL MODAL
 // ═══════════════════════════════════════════════════════════════════════════════
 function ScanDetailModal({ scanId, onClose }) {
-  const [scan, setScan]     = useState(null);
+  const [scan, setScan]       = useState(null);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
-  useEffect(()=>{
-    axios.get(API+'/scans/'+scanId,authHdr()).then(r=>setScan(r.data.scan)).catch(()=>{}).finally(()=>setLoading(false));
-  },[scanId]);
+  useEffect(() => {
+    axios.get(API+'/scans/'+scanId, authHdr()).then(r=>setScan(r.data.scan)).catch(()=>{}).finally(()=>setLoading(false));
+  }, [scanId]);
 
-  useEffect(()=>{
-    const h = e=>{ if(e.key==='Escape') onClose(); };
-    window.addEventListener('keydown',h);
-    return ()=>window.removeEventListener('keydown',h);
-  },[onClose]);
+  useEffect(() => {
+    const h = e => { if (e.key==='Escape') onClose(); };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [onClose]);
 
   return (
     <div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose();}}>
@@ -590,7 +696,7 @@ function ScanDetailModal({ scanId, onClose }) {
                 <div className="panel" style={{marginTop:'1.5rem'}}>
                   <div className="panel-hdr"><span className="panel-title">◈ Significant Matches ({scan.flagged_results.length})</span></div>
                   <div className="panel-body">
-                    {scan.flagged_results.map((r,i)=><MatchCard key={i} r={r} rank={i+1}/>)}
+                    {scan.flagged_results.map((r,i) => <MatchCard key={i} r={r} rank={i+1}/>)}
                   </div>
                 </div>
               )}
@@ -601,7 +707,9 @@ function ScanDetailModal({ scanId, onClose }) {
                     <span className="panel-title">All Papers — Sorted by Similarity</span>
                     <button className="btn-ghost" onClick={()=>setShowAll(v=>!v)}>{showAll?'Show Top 10':'Show All 50'}</button>
                   </div>
-                  <div style={{overflowX:'auto'}}><AllResultsTable results={showAll?scan.full_results:scan.full_results.slice(0,10)}/></div>
+                  <div style={{overflowX:'auto'}}>
+                    <AllResultsTable results={showAll ? scan.full_results : scan.full_results.slice(0,10)}/>
+                  </div>
                 </div>
               )}
 
@@ -626,9 +734,9 @@ function HistoryPage({ user }) {
   const [loading, setLoading]   = useState(true);
   const [detailId, setDetailId] = useState(null);
 
-  useEffect(()=>{
-    axios.get(API+'/scans',authHdr()).then(r=>setScans(r.data.scans||[])).catch(()=>{}).finally(()=>setLoading(false));
-  },[]);
+  useEffect(() => {
+    axios.get(API+'/scans', authHdr()).then(r=>setScans(r.data.scans||[])).catch(()=>{}).finally(()=>setLoading(false));
+  }, []);
 
   return (
     <div className="page fade-in">
@@ -656,7 +764,7 @@ function HistoryPage({ user }) {
                   <tr><th>#</th><th>Paper Title</th><th>Top Match Score</th><th>Top Match Paper</th><th>Verdict</th><th>Flagged</th><th>Date</th></tr>
                 </thead>
                 <tbody>
-                  {scans.map((s,i)=>(
+                  {scans.map((s,i) => (
                     <tr key={s.id} className="clickable-row" onClick={()=>setDetailId(s.id)} title="Click to view full results">
                       <td className="td-muted mono">{i+1}</td>
                       <td className="td-title">{s.paper_title}</td>
@@ -687,28 +795,28 @@ export default function App() {
   const [tab, setTab]         = useState('dashboard');
   const [booting, setBooting] = useState(true);
 
-  useEffect(()=>{
+  useEffect(() => {
     const token = getToken();
-    if(!token){ setBooting(false); return; }
-    axios.get(API+'/auth/me',authHdr()).then(r=>{ if(r.data.success) setUser(r.data.user); }).catch(()=>clearToken()).finally(()=>setBooting(false));
-  },[]);
+    if (!token) { setBooting(false); return; }
+    axios.get(API+'/auth/me', authHdr()).then(r=>{ if(r.data.success) setUser(r.data.user); }).catch(()=>clearToken()).finally(()=>setBooting(false));
+  }, []);
 
-  function handleAuth(u){ setUser(u); setTab('dashboard'); }
-  function logout(){ clearToken(); setUser(null); setTab('dashboard'); }
+  function handleAuth(u) { setUser(u); setTab('dashboard'); }
+  function logout() { clearToken(); setUser(null); setTab('dashboard'); }
 
-  if(booting) return (
+  if (booting) return (
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',background:'var(--cream)'}}>
       <div className="spinner-lg"/>
     </div>
   );
 
-  if(!user) return <AuthPage onAuth={handleAuth}/>;
+  if (!user) return <AuthPage onAuth={handleAuth}/>;
 
-  const tabs=[
-    {id:'dashboard',label:'Overview'},
-    {id:'detect',label:'Detection'},
-    {id:'papers',label:'Database'},
-    {id:'history',label:'History'},
+  const tabs = [
+    {id:'dashboard', label:'Overview'},
+    {id:'detect',    label:'Detection'},
+    {id:'papers',    label:'Database'},
+    {id:'history',   label:'History'},
   ];
 
   return (
@@ -722,7 +830,7 @@ export default function App() {
           </div>
         </div>
         <div className="nav-tabs">
-          {tabs.map(t=>(
+          {tabs.map(t => (
             <button key={t.id} className={`nav-tab ${tab===t.id?'active':''}`} onClick={()=>setTab(t.id)}>{t.label}</button>
           ))}
         </div>

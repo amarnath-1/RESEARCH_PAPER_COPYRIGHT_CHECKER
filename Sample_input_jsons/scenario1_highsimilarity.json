@@ -1,0 +1,3 @@
+{
+  "abstract": "his paper presents a novel deep learning framework for real-time object detection in autonomous vehicles. We propose an enhanced YOLO architecture that integrates multi-scale feature extraction with attention .We introduce a federated learning framework specifically designed for collaborative medical image analysis while preserving patient privacy. Our system enables multiple hospitals to jointly train diagnostic models without sharing sensitive patient data. Using differential privacy and secure aggregation protocols, we demonstrate that federated models can achieve perform."
+}
